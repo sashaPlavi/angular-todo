@@ -33,4 +33,11 @@ export class TodoService {
     const url: string = `${this.todosUrl}/${todo.id}`;
     return this.http.delete<Todo>(url, httpOptions);
   }
+  addTodo(todo: Todo): Observable<Todo> {
+    //console.log('blaservice' + todo);
+
+    const res = this.http.post<Todo>(this.todosUrl, todo, httpOptions);
+    console.log(res);
+    return res;
+  }
 }
