@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'applicaton/json',
+    'Content-Type': 'application/json',
   }),
 };
 
@@ -22,10 +22,10 @@ export class TodoService {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
   toggleCompleted(todo: Todo): Observable<any> {
-    console.log(todo);
+    //console.log(todo);
 
     const url: string = `${this.todosUrl}/${todo.id}`;
-    console.log(url);
+    //console.log(url);
 
     return this.http.put(url, todo, httpOptions);
   }
@@ -34,10 +34,10 @@ export class TodoService {
     return this.http.delete<Todo>(url, httpOptions);
   }
   addTodo(todo: Todo): Observable<Todo> {
-    //console.log('blaservice' + todo);
+    console.log(todo);
+    console.log(this.todosUrl);
+    console.log(httpOptions);
 
-    const res = this.http.post<Todo>(this.todosUrl, todo, httpOptions);
-    console.log(res);
-    return res;
+    return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
   }
 }
